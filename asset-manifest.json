@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-template/static/css/main.7a8650aa.css",
-    "main.js": "/react-template/static/js/main.f053b96f.js",
-    "static/js/787.227d4f8a.chunk.js": "/react-template/static/js/787.227d4f8a.chunk.js",
-    "static/media/logo.svg": "/react-template/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/react-template/index.html",
-    "main.7a8650aa.css.map": "/react-template/static/css/main.7a8650aa.css.map",
-    "main.f053b96f.js.map": "/react-template/static/js/main.f053b96f.js.map",
-    "787.227d4f8a.chunk.js.map": "/react-template/static/js/787.227d4f8a.chunk.js.map"
+    "main.css": "/waste-management/static/css/main.7a8650aa.css",
+    "main.js": "/waste-management/static/js/main.fb859bad.js",
+    "static/js/787.227d4f8a.chunk.js": "/waste-management/static/js/787.227d4f8a.chunk.js",
+    "static/media/logo.svg": "/waste-management/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/waste-management/index.html",
+    "main.7a8650aa.css.map": "/waste-management/static/css/main.7a8650aa.css.map",
+    "main.fb859bad.js.map": "/waste-management/static/js/main.fb859bad.js.map",
+    "787.227d4f8a.chunk.js.map": "/waste-management/static/js/787.227d4f8a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7a8650aa.css",
-    "static/js/main.f053b96f.js"
+    "static/js/main.fb859bad.js"
   ]
 }
