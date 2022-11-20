@@ -1,16 +1,13 @@
 import React,{useState} from 'react'
 import {  FaRegEnvelope, FaLock} from 'react-icons/fa'
-import Nav from '../componets/Nav'
+import Nav from './Nav'
 import {UserAuth} from '../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom'
 
-
-export default function Signup() {
+export default function Demo() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate()
 
   const {createUser} = UserAuth();
 
@@ -19,7 +16,6 @@ export default function Signup() {
       setError('')
       try{
               await createUser(email, password);
-              navigate('/Account')
       }catch(e){
           setError(e.message)
           console.log(e.message)
@@ -45,7 +41,10 @@ export default function Signup() {
 
         
                
-           
+             <div className='text-left font-bold text-2xl' >
+            <span className='text-green-600'>W</span>M
+          </div>  
+
 
          <div className='py-5'>
          <div className=' flex text-3xl font-bold text-green-600 mb-2'>Sign up to Account</div>
@@ -66,7 +65,7 @@ export default function Signup() {
 
             </div> */}
 
-            <span className='text-gray-400 text-sm my-3'>Alredy have an account? <a className=' text-blue-500' href='/waste-management/Login'>Login</a></span>
+            <span className='text-gray-400 my-3'>Have an account? <a className=' text-blue-500' href='/waste-management/Login'>Login</a></span>
             <br/>
             <div className='border-2 w-10 border-gray-400 inline-block mb-2' />
 
