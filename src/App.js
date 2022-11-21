@@ -5,6 +5,7 @@ import Install from "./componets/Install"
 import Login from "./page/Login"
 import Signup from "./page/Signup"
 import Account from "./page/Account"
+import Home from "./page/Home"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { AuthContextProvider } from "./contexts/AuthContext"
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/Login" element={<Login/>}/>
         <Route path="/Signup" element={<Signup/>}/>
         <Route path="/Account" element={<Account/>}/>
+        <Route path="/Home" element={<Home/>}/>
         
       </Routes>
     </BrowserRouter>

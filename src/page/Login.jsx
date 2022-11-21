@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {FaFacebookF, FaGoogle, FaInstagram, FaRegEnvelope, FaLock} from 'react-icons/fa'
-import Nav from '../componets/Nav'
+import Nav1 from '../componets/Nav1'
 import { useNavigate } from 'react-router-dom'
 import { UserAuth } from '../contexts/AuthContext'
 // import { async } from '@firebase/util'
@@ -30,7 +30,7 @@ const handleSubmit= async(e) =>{
   return (
 
             <div>
-                <Nav/>
+                <Nav1/>
 
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-green-600 ">
      
@@ -90,9 +90,9 @@ const handleSubmit= async(e) =>{
 
                 </div>
 
-                <button className='border-2 border-green-600 rounded-full px-12 py-2 inline-block  hover:bg-green-600  hover:text-white'>
+                <button className='border-2 border-green-600 rounded-full px-12 py-2 inline-block  hover:bg-green-600 active:bg-green-700  focus:outline-none  focus:ring  focus:ring-green-300 hover:text-white'>
                   Login
-                </button>
+                </button>                                                         
 
                 <span className='text-gray-400 text-sm my-3'>Dont have an account? <a className=' text-blue-500' href='/waste-management/Signup'>Signup</a></span>
 

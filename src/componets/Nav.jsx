@@ -9,7 +9,7 @@ import Button from './Button';
 
 const Nav = () => {
     let Links =[
-        {name:"HOME",link:"/"},
+        {name:"HOME",link:"/waste-management/Home"},
         {name:"SERVICE",link:"/"},
         {name:"ABOUT",link:"/"},
         {name:"CONTACTS",link:"/"},

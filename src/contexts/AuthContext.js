@@ -2,9 +2,13 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-   
+  
+  signInWithPopup,
+  
+
   onAuthStateChanged,
   signOut,
+  GoogleAuthProvider,
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -36,12 +40,48 @@ export const AuthContextProvider = ({ children }) => {
       }
   },[])
 
+  // -------------GoogleAuth----------------
+
+  const provider = new GoogleAuthProvider()
+
+  const signInWithGoogle = ( )=> {
+    signInWithPopup(auth, provider )
+    .then((result) => {
+        const name = result.user.displayName;
+        const email = result.user.email;
+        const profilePic = result.user.photoURL
+
+        localStorage.setItem ('photo' , profilePic)
+        localStorage.setItem("name" , name);
+        localStorage.setItem("email" , email);
+    
+       
+      
+    }).catch ((error) => {
+      console.log(error)
+    })
+    
+  }
+
+
+
+
+
+  // ---------------------------------------
+
+  
+
  
   return (
-    <UserContext.Provider value={{ createUser, user , logout, signIn }}>
+    <UserContext.Provider value={{ createUser, user , logout, signIn, signInWithGoogle }}>
       {children}
     </UserContext.Provider>
   );
+
+
+
+
+  
 };
 
 export const UserAuth = () => {
