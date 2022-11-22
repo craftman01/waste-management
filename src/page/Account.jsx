@@ -14,13 +14,16 @@ const Account = ()=>{
     const handleLogout = async ()=>{
                 try{
                         await logout()
-                         navigate('/login')
+                         navigate('/signup')
                          console.log('you are loged out')
                 } catch (e) {
                     console.log(e.message   )
 
                 }
     }
+
+      
+
  
    return (
      <div>
@@ -30,9 +33,33 @@ const Account = ()=>{
      <main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
      <div className=' bg-white  rounded-2xl p-5   shadow-2xl   '>
         <div className='flex flex-col items-center justify-center'>
-            User Email: {user && user.email}
-            <br/>
-            <button onClick ={handleLogout}>
+          <p> User Email:   {user?.email}<br/>  </p>
+
+          <div className=' text-bold  '>         User Name:  </div>
+                    <span className=' text-bold text-xl text-green-600'>{localStorage.getItem("name")}  </span> 
+                  
+
+
+
+              <div className='flex flex-col items-center justify-center'>
+
+             
+
+                <img  src={localStorage.getItem("photo")} alt=""/> 
+
+               
+
+
+              </div>
+                        
+          
+         
+           
+            <br/> 
+        
+
+
+            <button className=' text-blue-500' onClick ={handleLogout}>
                 LogOut
             </button>
         </div>

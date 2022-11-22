@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {FaFacebookF, FaGoogle, FaInstagram, FaRegEnvelope, FaLock} from 'react-icons/fa'
 import Nav1 from '../componets/Nav1'
+import { Alert } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { UserAuth } from '../contexts/AuthContext'
 // import { async } from '@firebase/util'
@@ -66,6 +67,16 @@ const handleSubmit= async(e) =>{
             </div>
 
             <p className='text-gray-400 my-3'>or use your email account</p>
+            
+ 
+            {error && 
+                  <div className='flex flex-col items-center'>
+                  <div className=' bg-gray-100 w-50 p-2 flex items-center mb-3'>
+              <Alert className=' text-xs text-red-600 ' varuant="danger">{error}</Alert>
+              </div>
+              </div>
+              }
+            
 
             <form onSubmit={handleSubmit}>
                 <div className='flex flex-col items-center'>

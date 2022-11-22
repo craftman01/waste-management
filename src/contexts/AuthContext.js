@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   
   signInWithPopup,
-  
+   
 
   onAuthStateChanged,
   signOut,
@@ -22,6 +22,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
       const signIn = ( email, password) => {
+        console.log("Email", email)
           return signInWithEmailAndPassword(auth ,email, password)
       }
 
@@ -32,8 +33,9 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() =>{
       const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
-        console.log(currentUser)
-        setUser(currentUser)
+        setUser(currentUser) 
+               console.log('User', currentUser)
+
       })
       return() => {
         unsubscribe();
@@ -42,46 +44,67 @@ export const AuthContextProvider = ({ children }) => {
 
   // -------------GoogleAuth----------------
 
-  const provider = new GoogleAuthProvider()
+  
 
-  const signInWithGoogle = ( )=> {
-    signInWithPopup(auth, provider )
+  function googleSignIn(){
+    const provider = new GoogleAuthProvider()
+    return signInWithPopup(auth, provider) 
     .then((result) => {
-        const name = result.user.displayName;
-        const email = result.user.email;
-        const profilePic = result.user.photoURL
-
-        localStorage.setItem ('photo' , profilePic)
-        localStorage.setItem("name" , name);
-        localStorage.setItem("email" , email);
-    
-       
       
-    }).catch ((error) => {
-      console.log(error)
-    })
+      const name = result.user.displayName;
+      const email = result.user.email;
+      const profilePic = result.user.photoURL
+      const UID = result.user.uid
+
+      localStorage.setItem("Uid", UID)
+      localStorage.setItem ('photo' , profilePic)
+      localStorage.setItem("name" , name);
+      localStorage.setItem("email" , email);
+       
+
     
+        }).catch ((error) => {
+          console.log(error)
+        })
   }
 
 
 
 
 
+  // const signInWithGoogle = ( )=> {
+  //   signInWithPopup(auth, provider )
+  //   .then((result) => {
+      
+    
+       
+
+      
+  //   }).catch ((error) => {
+  //     console.log(error)
+  //   })
+    
+  // }
+
+    // const name = result.user.displayName;
+    //     const email = result.user.email;
+    //     const profilePic = result.user.photoURL
+
+    //     localStorage.setItem ('photo' , profilePic)
+    //     localStorage.setItem("name" , name);
+    //     localStorage.setItem("email" , email);
+  
   // ---------------------------------------
 
   
 
  
   return (
-    <UserContext.Provider value={{ createUser, user , logout, signIn, signInWithGoogle }}>
+    <UserContext.Provider value={{ createUser, user , logout, signIn, googleSignIn }}>
       {children}
     </UserContext.Provider>
   );
 
-
-
-
-  
 };
 
 export const UserAuth = () => {

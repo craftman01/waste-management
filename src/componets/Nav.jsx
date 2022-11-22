@@ -9,7 +9,7 @@ import Button from './Button';
 
 const Nav = () => {
     let Links =[
-        {name:"HOME",link:"/waste-management/Home"},
+        {name:"HOME",link:"/waste-management/ "},
         {name:"SERVICE",link:"/"},
         {name:"ABOUT",link:"/"},
         {name:"CONTACTS",link:"/"},
@@ -48,9 +48,12 @@ Links.map((link)=>(
 
 ))
 }
-        <Button>
-            Get Started
+       <a href='/waste-management/signup'>
+       <Button>
+            Sign up
         </Button>
+       </a>
+        
         
 </ul>
 

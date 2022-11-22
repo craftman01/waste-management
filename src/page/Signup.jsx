@@ -1,8 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState,    } from 'react'
 import {  FaRegEnvelope, FaLock, FaGoogle, FaInstagram, FaFacebookF} from 'react-icons/fa'
 import Nav1 from '../componets/Nav1'
 import {UserAuth} from '../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import { Alert } from 'react-bootstrap'
 // import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
  
 
@@ -11,30 +12,45 @@ export default function Signup() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [ error , setError] = useState('');
   const navigate = useNavigate()
 
+
+
   const {createUser} = UserAuth();
-  const {signInWithGoogle} = UserAuth();
+  const {googleSignIn} = UserAuth();
+  // const {user} = UserAuth();
 
 
-
+// ------------Simple Email----------------------------
   const handleSubmit = async (e) => {
       e.preventDefault()
       setError('')
       try{
               await createUser(email, password);
-              navigate('/Account')
+              navigate('/login')
       }catch(e){
           setError(e.message)
           console.log(e.message)
       }
 
   }
+// -----------------------------------------------------
 
-    
+// ------------------Google SignUp----------------------
 
+const handleGoogleSignIn =  async(e) => {
+  e.preventDefault()
+  try{
 
+  await googleSignIn()     
+   navigate('/account')
+  }catch (error){
+      console.log(error)
+  }
+}
+
+// -----------------------------------------------------
 
 
   return (
@@ -66,13 +82,23 @@ export default function Signup() {
             <a href='/waste-management/Demo#' className='hover:animate-pulse border-2 border-gray-200 rounded-full p-3 mx-1'>
             <FaInstagram className='text-sm'/>
             </a>
-            <a   className=' hover:animate-pulse border-2 border-gray-200 rounded-full p-3 mx-1'>
-            <FaGoogle onSubmit={handleSubmit} onClick={signInWithGoogle} className='text-sm'/>
-            </a>
+            <div   className=' hover:animate-pulse border-2 border-gray-200 rounded-full p-3 mx-1'>
+            <FaGoogle   onClick={handleGoogleSignIn} className='text-sm'/>
+            </div>
 
             </div>
 
             <span className='text-gray-400 text-sm my-3'>Alredy have an account? <a className=' text-blue-500' href='/waste-management/Login'>Login</a></span>
+          
+              {error && 
+                  <div className='flex flex-col items-center'>
+                  <div className=' bg-gray-100 w-50 p-2 flex items-center mb-3'>
+              <Alert className=' text-xs text-red-600 ' varuant="danger">{error}</Alert>
+              </div>
+              </div>
+              }
+              
+
             <br/>
             <div className='border-2 w-10 border-gray-400 inline-block mb-2' />
 
@@ -95,11 +121,13 @@ export default function Signup() {
                  <label className='flex items-center text-xs'>
                        <input type="checkbox"/> Remember me
                  </label>
-                 <a href='/waste-management/demo' className='text-xs'>Forgot password</a>
+                 {/* <a href='/waste-management/demo' className='text-xs'>Forgot password</a> */}
+                 <Link className=' text-xs' to='/'>Forgot password</Link>
 
-                </div>
 
-                <button className='border-2 border-green-600 rounded-full px-12 py-2 inline-block  hover:bg-green-600  active:bg-green-700  focus:outline-none  focus:ring  focus:ring-green-300  hover:text-white'>
+                 </div>
+
+                 <button className='border-2 border-green-600 rounded-full px-12 py-2 inline-block  hover:bg-green-600  active:bg-green-700  focus:outline-none  focus:ring  focus:ring-green-300  hover:text-white'>
                   Sign up
                 </button>
 
